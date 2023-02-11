@@ -24,9 +24,9 @@ button {
 }
 
 button:hover {transition:0.3s; box-shadow: 0px 5px; #000000 ;}
-.buttonRock:hover {background-color:#C2B08D;}
-.buttonPaper:hover{background-color:#E8E8CE;}
-.buttonScissors:hover{background-color:#9FBFA3}
+.Rock:hover {background-color:#C2B08D;}
+.Paper:hover{background-color:#E8E8CE;}
+.Scissors:hover{background-color:#9FBFA3}
 
 .main {
     min-height:100vh;
@@ -55,6 +55,17 @@ button:hover {transition:0.3s; box-shadow: 0px 5px; #000000 ;}
     justify-content:center;
     align-items:center;
     flex-direction:column;
+    min-width:400px;
+}
+
+@keyframes roundResultChange {
+    0% {color:white;}
+    100% {color:black;}
+}
+
+.roundResult.change {
+    animation-name:roundResultChange;
+    animation-duration:0.5s;
 }
 
 .round {

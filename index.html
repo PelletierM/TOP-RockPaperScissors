@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Rock Paper Scissors</title>
     <script src="./js/main.js" defer></script>
-    <link rel ="preload" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet" as="font">
+    <link rel ="preload" as="font" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css">
 
 </head>
@@ -16,9 +16,9 @@
             <p>Choose your weapon!</p>
         </div>
         <div class="buttonContainer">
-            <button class="buttonRock">Rock</button>
-            <button class="buttonPaper">Paper</button>
-            <button class="buttonScissors">Scissors</button>
+            <button class="choiceButton Rock">Rock</button>
+            <button class="choiceButton Paper">Paper</button>
+            <button class="choiceButton Scissors">Scissors</button>
         </div>
     </div>
     <div class="results">
@@ -27,19 +27,19 @@
         </div>
         <div class="counters">
             <div class="counterMain">
-                <div class="counter five"><p>5</p></div>
-                <div class="counter four"><p>4</p></div>
-                <div class="counter three"><p>3</p></div>
-                <div class="counter two"><p>2</p></div>
-                <div class="counter one"><p>1</p></div>
+                <div class="counter p5"><p>5</p></div>
+                <div class="counter p4"><p>4</p></div>
+                <div class="counter p3"><p>3</p></div>
+                <div class="counter p2"><p>2</p></div>
+                <div class="counter p1"><p>1</p></div>
                 <div class="counterText"><p>You</p></div>
             </div>
             <div class="counterMain">
-                <div class="counter five"><p>5</p></div>
-                <div class="counter four"><p>4</p></div>
-                <div class="counter three"><p>3</p></div>
-                <div class="counter two"><p>2</p></div>
-                <div class="counter one"><p>1</p></div>
+                <div class="counter c5"><p>5</p></div>
+                <div class="counter c4"><p>4</p></div>
+                <div class="counter c3"><p>3</p></div>
+                <div class="counter c2"><p>2</p></div>
+                <div class="counter c1"><p>1</p></div>
                 <div class="counterText"><p>Computer</p></div>
             </div>
         </div>

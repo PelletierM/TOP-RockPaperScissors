@@ -1,4 +1,3 @@
-//Get computer choice (Rock Paper Scissors)//
 function getComputerChoice() {
     let randomNumber = Math.floor(Math.random() * 3 + 1);
     let computerChoice = ""
@@ -8,21 +7,6 @@ function getComputerChoice() {
     return computerChoice
 }
 
-//Write function to get player choice using prompt//
-    //If answer is not Rock, Paper or Scissors (case insensitive) return error and keep loop going//
-    //If answer is valid update value and stop loop//
-function getPlayerChoice() {
-    let playerChoice = "";
-    for (i = 0; i < 1; i) {
-        let playerPrompt = prompt("Choose between Rock, Paper and Scissors", "").toLowerCase();
-        if (playerPrompt == "rock" || playerPrompt == "paper" || playerPrompt == "scissors") {playerChoice = playerPrompt;
-        i++}
-        else {console.log("Please enter a valid input")}}
-    return playerChoice}
-
-
-//Play a round by calling both computer and player choice//
-        //Make conditions for winning or losing game//
 function playRound(player, computer) {
     if (player == computer) {return "This round is a tie! Computer also chose " + player.slice(0, 1).toUpperCase() + player.slice(1) + "!"}
     else if (player == "rock" && computer == "paper") {return "You lose a round! Computer chose Paper!"}
@@ -33,24 +17,63 @@ function playRound(player, computer) {
     else {return "You win a round! Computer chose Paper!"}
 }
 
-//Play a best of 5 game//
-function game() {
-    console.log("This is a best of 5 game of Rock Paper Scissors")
-    for (j = 0, k = 0 ; (j < 3) && (k < 3) ; j, k) {
-        let playerSelection = getPlayerChoice();
-        let computerSelection = getComputerChoice();
-        let roundResult = playRound(playerSelection, computerSelection);
-        if (roundResult.slice(4, 5) == "w") {++j}
-        else if (roundResult.slice(4, 5) == "l") {++k}
-        else {};
-        console.log(roundResult);
-        if (j == 3) {console.log("You have won the game " + j + " to " + k + "! Refresh the page to play a new game.")}
-        else if (k == 3) {console.log("Game over! Computer has won the game " + k + " to " + j + "! Refresh the page to play a new game.")}
-        else if (j == k) {console.log("The game is tied " + j + " to " + k + "!")}
-        else if (j > k) {console.log("You're leading the game " + j + " to " + k + "!")}
-        else {console.log("Computer is leading the game " + k + " to " + j + "!")};
+const roundResultDefault = document.querySelector(".roundResult").innerHTML;
+let roundResult = document.querySelector(".roundResult")
+let computerCount = 0;
+let playerCount = 0;
+
+// offsetWidth is a reload trick to trigger class change, 
+// investigate here if transition reset is not working
+function roundResultAnimReset() {
+    roundResult.classList.remove("change");
+    roundResult.offsetWidth;
+    roundResult.classList.add("change");
+}
+
+function updateCounter(result) {
+    if (result.slice(4, 5) == "w") {++playerCount}
+    else if (result.slice(4, 5) == "l") {++computerCount} 
+    else {};
+    
+    let playerUpdate = document.querySelector(".p" + playerCount)
+    if (playerUpdate != null) {playerUpdate.classList.add("active")}
+    else {};
+
+    let computerUpdate = document.querySelector(".c" + computerCount)
+    if (computerUpdate != null) {computerUpdate.classList.add("active")}
+    else {};
+}
+
+// This function adjusts the first parameter of playRound based on
+// the button's innterHTML so that there is no need to call and 
+// adjust it manually for each button
+function clickEvent(e) {
+    if (computerCount === 5 || playerCount === 5) {}
+    else {let result = playRound(e.target.innerHTML.toLowerCase(), getComputerChoice());
+        updateCounter(result);
+        if (computerCount === 5) {roundResult.textContent="Game Over, Computer won.";
+        roundResultAnimReset();}
+        else if (playerCount === 5) {roundResult.textContent="You win the game!"
+        roundResultAnimReset()}
+        else {roundResult.textContent=result;
+        roundResultAnimReset()}
     }
 }
 
-//Run game//
-// game();
+// This allows to addEventListener for all buttons with same class
+// so that there is no need to write one for every single button
+let choiceButtons = document.querySelectorAll(".choiceButton");
+choiceButtons.forEach(function(choiceButton) {
+    choiceButton.addEventListener("click", function(e) {clickEvent(e);})})
+
+let reset = document.querySelector(".resetButton");
+reset.addEventListener("click", function(e) {
+    let counters = document.querySelectorAll(".counter");
+    counters.forEach(function(counter) {
+    counter.classList.remove("active")})
+    computerCount = 0;
+    playerCount = 0;
+    roundResult.textContent=roundResultDefault;
+    roundResultAnimReset();
+    }
+)
