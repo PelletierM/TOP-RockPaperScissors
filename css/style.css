@@ -1,0 +1,111 @@
+body {
+    font-family: "Roboto", Helvetica, sans-serif;
+    font-size:18px;
+    margin:0px;
+    padding:0px;
+}
+
+p {
+    margin:0px;
+}
+
+button {
+    transition:0.3s;
+    min-height: 50px;
+    min-width:100px;
+    margin:0px 10px;
+    border-radius:10px;
+    border-style:solid;
+    border-color:black;
+    border-width:2px;
+    background-color : white;
+    font-family: "Roboto";
+    font-size: 18px;
+}
+
+button:hover {transition:0.3s; box-shadow: 0px 5px; #000000 ;}
+.buttonRock:hover {background-color:#C2B08D;}
+.buttonPaper:hover{background-color:#E8E8CE;}
+.buttonScissors:hover{background-color:#9FBFA3}
+
+.main {
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items : center;
+    flex-direction : column;
+}
+
+.playerZoneText {
+    font-size:24px;
+    font-weight:600;
+    display:flex;
+    justify-content:center;
+    margin:25px 0px;
+}
+
+.buttonContainer {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.results {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+}
+
+.round {
+    margin:50px 0px;
+}
+
+.counters {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.counterMain {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-direction:column;
+}
+
+.counter {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:50px;
+    width:50px;
+    margin-bottom:10px;
+    margin-left:50px;
+    margin-right:50px;
+    border-color:black;
+    border-style:solid;
+    border-radius:5px;
+    border-width:2px;
+    font-size:16px;
+}
+
+.counter.active {
+    transition:0.5s;
+    color:white;
+    background-color:black;
+}
+
+.counterText {
+    margin-top:15px;
+    font-size:18px;
+}
+
+.reset {
+    margin-top:50px;
+    margin-bottom:25px;
+}
+
+.resetButton:hover {
+    background-color:#FF7D7C;
+}
